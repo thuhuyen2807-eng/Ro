@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tình yêu của Anh</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fce4ec; /* Màu nền hồng nhạt */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            position: relative;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #d81b60; /* Hồng đậm */
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #4a148c; /* Tím */
+            margin-bottom: 30px;
+        }
+
+        /* Container cho các nút để định vị di chuyển dễ dàng */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 300px; /* Độ rộng cần thiết để nút di chuyển */
+            height: 60px; /* Chiều cao cần thiết */
+            margin: 20px auto 0;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            font-weight: bold;
+            position: absolute;
+            white-space: nowrap;
+        }
+
+        #yesBtn {
+            background-color: #4CAF50; /* Xanh lá */
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        #yesBtn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        #noBtn {
+            background-color: #f44336; /* Đỏ */
+            color: white;
+            transition: all 0.2s ease-out; /* Chuyển động nhanh và mượt hơn */
+            z-index: 10; /* Đảm bảo nút này ở trên */
+        }
+
+        #catGif {
+            width: 150px;
+            height: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tình iu của anhh</h1>
+        <h2>Em ơi đi chơi với anh nhé bấy biii</h2>
+        
+        <img id="catGif" src="https://i.imgur.com/g8o4w8X.gif" alt="Mèo hỏi">
+        
+        <form id="dateForm" action="https://formsubmit.co/thuthuhuyen2807@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Lời mời hẹn hò đã được trả lời!">
+            <input type="hidden" name="Kết quả trả lời" id="resultInput" value="Dạaaa (Đồng ý)">
+
+            <div class="button-group">
+                <button type="submit" class="btn" id="yesBtn" style="left: 20px;">Dạaaa</button>
+                
+                <button type="button" class="btn" id="noBtn" style="right: 20px;">Em hong chịu đâu</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const buttonGroup = document.querySelector('.button-group');
+
+        // Hàm xử lý việc di chuyển nút "Em hong chịu đâu"
+        noBtn.addEventListener('mouseover', () => {
+            const containerRect = buttonGroup.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Tính toán vị trí ngẫu nhiên mới trong phạm vi container
+            // Đảm bảo nút không di chuyển quá sát lề
+            const padding = 10;
+            const newX = Math.floor(Math.random() * (containerRect.width - btnRect.width - 2 * padding)) + padding;
+            const newY = Math.floor(Math.random() * (containerRect.height - btnRect.height - 2 * padding)) + padding;
+
+            // Áp dụng vị trí mới
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        });
+    </script>
+</body>
+</html>
